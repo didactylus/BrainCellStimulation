@@ -25,11 +25,11 @@ namespace BrainCellStimulation
 
         public static int SetPortDataBits(int defaultPortDataBits) => ChooseValue(defaultPortDataBits, "Data Bits", db => int.Parse(db));
 
-        public static Parity SetPortParity(Parity defaultPortParity) => ChooseValue(defaultPortParity, "Parity", par => Enum.Parse<Parity>(par, true), Enum.GetValues<Parity>());
+        public static Parity SetPortParity(Parity defaultPortParity) => ChooseValue(defaultPortParity, "Parity", par => Enum.TryParse<Parity>(par, true), Enum.GetValues<Parity>());
 
-        public static StopBits SetPortStopBits(StopBits defaultPortStopBits) => ChooseValue(defaultPortStopBits, "Stop Bits", sb => Enum.Parse<StopBits>(sb, true), Enum.GetValues<StopBits>());
+        public static StopBits SetPortStopBits(StopBits defaultPortStopBits) => ChooseValue(defaultPortStopBits, "Stop Bits", sb => Enum.TryParse<StopBits>(sb, true), Enum.GetValues<StopBits>());
 
-        public static Handshake SetPortHandshake(Handshake defaultPortHandshake) => ChooseValue(defaultPortHandshake, "HandShake", hs => Enum.Parse<Handshake>(hs, true), Enum.GetValues<Handshake>());
+        public static Handshake SetPortHandshake(Handshake defaultPortHandshake) => ChooseValue(defaultPortHandshake, "HandShake", hs => Enum.TryParse<Handshake>(hs, true), Enum.GetValues<Handshake>());
 
         public static T ChooseValue<T>(T defaultValue, string title, Func<string, T> parser, IEnumerable<T> items = null)
         {
